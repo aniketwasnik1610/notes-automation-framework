@@ -4,13 +4,13 @@
        parallel="classes"
        thread-count="3">
 
-    <test name="AllTests">
+    <test name="AutomationTests">
 
         <classes>
 
             <class name="tests.ui.LoginTest"/>
 
-            <class name="tests.ui.CreateNoteTest"/>
+            <class name="tests.ui.NotesTest"/>
 
             <class name="tests.api.NotesApiTest"/>
 
