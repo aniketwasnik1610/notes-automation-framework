@@ -10,7 +10,7 @@ public class LoginPage extends BasePage {
             By.linkText("Login");
 
     private final By email =
-            By.xpath("//*[@id='email']");
+            By.id("email");
 
     private final By password =
             By.xpath("//input[@type='password']");
@@ -25,20 +25,16 @@ public class LoginPage extends BasePage {
         );
     }
 
-    public void login(String mail,String pass) {
-
-        Wait(3000);
+    public void login(
+            String mail,
+            String pass) {
 
         click(loginBtnHome);
-
-        Wait(3000);
 
         type(email,mail);
 
         type(password,pass);
 
         click(submitBtn);
-
-        Wait(3000);
     }
 }
