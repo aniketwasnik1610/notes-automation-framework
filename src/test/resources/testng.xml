@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="NotesAutomationSuite"
+       parallel="classes"
+       thread-count="3">
+
+    <test name="AllTests">
+
+        <classes>
+
+            <class name="tests.ui.LoginTest"/>
+
+            <class name="tests.ui.CreateNoteTest"/>
+
+            <class name="tests.api.NotesApiTest"/>
+
+            <class name="tests.e2e.HybridE2ETest"/>
+
+        </classes>
+
+    </test>
+
+</suite>
