@@ -21,25 +21,29 @@ public class NotesPage extends BasePage {
 
     public void createNote(String title, String description) {
 
-        WaitUtility.waitForElement(addNoteBtn);
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         click(addNoteBtn);
 
-        WaitUtility.waitForElement(titleField);
         type(titleField, title);
 
-        WaitUtility.waitForElement(descriptionField);
         type(descriptionField, description);
 
-        WaitUtility.waitForElement(createBtn);
         click(createBtn);
     }
 
     public boolean isAddNoteVisible() {
         try {
             WaitUtility.waitForElement(addNoteBtn);
+
             return DriverFactory.getDriver()
                     .findElement(addNoteBtn)
                     .isDisplayed();
+
         } catch (Exception e) {
             return false;
         }
