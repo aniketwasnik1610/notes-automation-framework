@@ -8,9 +8,7 @@ import utils.WaitUtility;
 public class NotesPage extends BasePage {
 
     private final By addNoteBtn =
-            By.xpath(
-                    "/html/body/main/div[3]/div[2]/div/div/div/div/div/div/div[2]/div/div[2]/div[2]/button"
-            );
+            By.cssSelector("[data-testid='add-new-note']");
 
     private final By titleField =
             By.id("title");
@@ -19,26 +17,29 @@ public class NotesPage extends BasePage {
             By.id("description");
 
     private final By createBtn =
-            By.xpath(
-                    "//button[contains(text(),'Create')]"
-            );
+            By.xpath("//button[contains(text(),'Create')]");
 
-    public void createNote(
-            String title,
-            String description) {
+    public void createNote(String title, String description) {
 
+        WaitUtility.waitForElement(addNoteBtn);
         click(addNoteBtn);
 
-        type(titleField,title);
+        WaitUtility.waitForElement(titleField);
+        type(titleField, title);
 
-        type(descriptionField,description);
+        WaitUtility.waitForElement(descriptionField);
+        type(descriptionField, description);
 
+        WaitUtility.waitForElement(createBtn);
         click(createBtn);
     }
 
     public boolean isAddNoteVisible() {
         try {
-            return DriverFactory.getDriver().findElement(addNoteBtn).isDisplayed();
+            WaitUtility.waitForElement(addNoteBtn);
+            return DriverFactory.getDriver()
+                    .findElement(addNoteBtn)
+                    .isDisplayed();
         } catch (Exception e) {
             return false;
         }
@@ -46,10 +47,16 @@ public class NotesPage extends BasePage {
 
     public boolean isNotePresent(String title) {
         try {
-            By noteTitleLocator = By.xpath("//*[contains(text(),\"" + title + "\")]");
-            // wait a short time implicitly via WaitUtility
+
+            By noteTitleLocator =
+                    By.xpath("//*[contains(text(),'" + title + "')]");
+
             WaitUtility.waitForElement(noteTitleLocator);
-            return DriverFactory.getDriver().findElements(noteTitleLocator).size() > 0;
+
+            return DriverFactory.getDriver()
+                    .findElements(noteTitleLocator)
+                    .size() > 0;
+
         } catch (Exception e) {
             return false;
         }

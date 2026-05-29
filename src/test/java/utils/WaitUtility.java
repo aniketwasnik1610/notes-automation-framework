@@ -14,10 +14,20 @@ public class WaitUtility {
         WebDriverWait wait =
                 new WebDriverWait(
                         DriverFactory.getDriver(),
-                        Duration.ofSeconds(10));
+                        Duration.ofSeconds(20));
 
         wait.until(
-                ExpectedConditions
-                        .visibilityOfElementLocated(locator));
+                ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public static void waitForClickable(By locator) {
+
+        WebDriverWait wait =
+                new WebDriverWait(
+                        DriverFactory.getDriver(),
+                        Duration.ofSeconds(20));
+
+        wait.until(
+                ExpectedConditions.elementToBeClickable(locator));
     }
 }

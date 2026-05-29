@@ -13,27 +13,24 @@ public class LoginPage extends BasePage {
             By.id("email");
 
     private final By password =
-            By.xpath("//input[@type='password']");
+            By.id("password");
 
     private final By submitBtn =
             By.xpath("//button[@type='submit']");
 
     public void openApp() {
-
         DriverFactory.getDriver().get(
                 "https://practice.expandtesting.com/notes/app"
         );
     }
 
-    public void login(
-            String mail,
-            String pass) {
+    public void login(String mail, String pass) {
 
         click(loginBtnHome);
 
-        type(email,mail);
+        type(email, mail);
 
-        type(password,pass);
+        type(password, pass);
 
         click(submitBtn);
     }

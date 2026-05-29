@@ -13,11 +13,10 @@ public class NotesTest extends BaseTest {
     @Test(description = "TC-UI-02")
     public void createNoteTest() {
 
-        LoginPage lp =
-                new LoginPage();
+        LoginPage lp = new LoginPage();
+        NotesPage np = new NotesPage();
 
-        NotesPage np =
-                new NotesPage();
+        String noteTitle = "Automation Note";
 
         lp.openApp();
 
@@ -27,44 +26,45 @@ public class NotesTest extends BaseTest {
         );
 
         np.createNote(
-                "Automation Note",
+                noteTitle,
                 "Created using Selenium"
+        );
+
+        np.refreshPage();
+
+        Assert.assertTrue(
+                np.isNotePresent(noteTitle),
+                "Created note should be visible"
         );
     }
 
     @Test(description = "TC-UI-03")
     public void verifyNoteAppearsTest() {
-
         Assert.assertTrue(true);
     }
 
     @Test(description = "TC-UI-04")
     public void createHomeCategoryNoteTest() {
-
         Assert.assertTrue(true);
     }
 
     @Test(description = "TC-UI-05")
     public void createWorkCategoryNoteTest() {
-
         Assert.assertTrue(true);
     }
 
     @Test(description = "TC-UI-06")
     public void createPersonalCategoryNoteTest() {
-
         Assert.assertTrue(true);
     }
 
     @Test(description = "TC-NEG-03")
     public void emptyTitleValidationTest() {
-
         Assert.assertTrue(true);
     }
 
     @Test(description = "TC-NEG-06")
     public void specialCharacterValidationTest() {
-
         Assert.assertTrue(true);
     }
 }
