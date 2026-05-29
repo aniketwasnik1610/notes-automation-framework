@@ -21,6 +21,10 @@ public class LoginTest extends BaseTest {
                 "aniket@gmail.com",
                 "pass123"
         );
+
+        // basic assertion: add note button should be visible after successful login
+        pages.NotesPage np = new pages.NotesPage();
+        org.testng.Assert.assertTrue(np.isAddNoteVisible(), "Add note button should be visible after login");
     }
 
     @Test(description = "TC-NEG-01")

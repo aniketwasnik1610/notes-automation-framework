@@ -36,5 +36,8 @@ public class CreateNoteTest extends BaseTest {
                 noteTitle,
                 "Created using Selenium"
         );
+
+        // verify note appears in UI
+        org.testng.Assert.assertTrue(np.isNotePresent(noteTitle), "Newly created note should appear in the UI");
     }
 }
